@@ -1,6 +1,0 @@
-[0m[[0mdebug[0m] [0mCopy resource mappings: [0m
-[0m[[0mdebug[0m] [0m	(C:\Users\ighachane\applications\twitternew\conf\application.conf,C:\Users\ighachane\applications\twitternew\target\scala-2.10\classes\application.conf)[0m
-[0m[[0mdebug[0m] [0m	(C:\Users\ighachane\applications\twitternew\conf\evolutions,C:\Users\ighachane\applications\twitternew\target\scala-2.10\classes\evolutions)[0m
-[0m[[0mdebug[0m] [0m	(C:\Users\ighachane\applications\twitternew\conf\routes,C:\Users\ighachane\applications\twitternew\target\scala-2.10\classes\routes)[0m
-[0m[[0mdebug[0m] [0m	(C:\Users\ighachane\applications\twitternew\conf\evolutions\default,C:\Users\ighachane\applications\twitternew\target\scala-2.10\classes\evolutions\default)[0m
-[0m[[0mdebug[0m] [0m	(C:\Users\ighachane\applications\twitternew\conf\evolutions\default\1.sql,C:\Users\ighachane\applications\twitternew\target\scala-2.10\classes\evolutions\default\1.sql)[0m
