@@ -1,0 +1,42 @@
+@(
+message: String,
+utilisateurs: List[models.Utilisateur],
+utilisa : Utilisateur,
+userconnect :Utilisateur
+)
+<!-- index "appelle" main en lui passant en paramètre le titre de la page et le contenu HTML -->
+
+@main("Gestion des comptes", userconnect) {
+
+
+<h2> @message </h2>
+
+	 <table class="table table-striped">
+        
+                <tr>
+                        <td>Adresse Email</td>
+                        <td>Username</td>
+                </tr>
+                @if(utilisa != null){
+                		<tr>
+		                        <td>@utilisa.email</td>
+		                        <td>@utilisa.username</td>
+		
+		                </tr>
+	</table>   		 		
+   } else {
+   
+	                @for((user, i) <- utilisateurs.zipWithIndex.reverse) {
+						<tr>
+			                        <td>@user.email</td>
+			                        <td>@user.username</td>
+			
+			    		</tr>
+			    }
+			    
+	</table>
+	             	 
+		  }
+                            
+ }
+ 
