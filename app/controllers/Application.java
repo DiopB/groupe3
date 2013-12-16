@@ -8,7 +8,7 @@ import models.*;
 import views.html.*;
 
 
-@Security.Authenticated(Secured.class)
+
 public class Application extends Controller {
 
     public static Result index() {

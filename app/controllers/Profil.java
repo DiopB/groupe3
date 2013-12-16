@@ -43,7 +43,7 @@ public class Profil extends Controller {
         		 return "ByEmail";
         		 }
         	 else{
-        		 if(!Utilisateur.findByusername(recherche).isEmpty()){
+        		 if(Utilisateur.findByusername(recherche) != null){
         		 return "ByUsername";
         	 }
         	 else{
@@ -51,5 +51,10 @@ public class Profil extends Controller {
         	 }
          }
      }
+		public static Result modification(){
+			return ok(profilmodif.render("page profil",
+					Utilisateur.findByEmail(session("email"))));
+		}
+	 
 
 }

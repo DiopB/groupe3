@@ -2,14 +2,15 @@
 message: String,
 profutilisateur: Utilisateur,
 tweets: List[models.Tweet],
-connectuser: Utilisateur
+connectuser: Utilisateur,
+isEditable: Boolean 
 )
 @main("Gestion des comptes",connectuser) {
 
-<h2> @message </h2>
+<h3> @message @profutilisateur.username<span>(@profutilisateur.email)</span> </h3>
 
 <fieldset>
-<h3>Mes Tweets</h3>
+<h4>Tweets</h4>
  <table class="table table-striped">
         
                 <tr>                     
@@ -24,9 +25,19 @@ connectuser: Utilisateur
                 </tr>
         }
         </table>
-       </fieldset>
+</fieldset>
 
 
+<a href="@routes.Abonnements.abonnement(profutilisateur.username)">Abonnements</a></br>
+<a href="@routes.Abonnements.abonne(profutilisateur.username)">Abonnés</a>
 
 
+@if(connectuser == profutilisateur || isEditable == false ){
+
+}else{
+<form method="post" action="/abonne/add">
+			<input type="hidden" name="username_ajout" value="@profutilisateur.username">
+			<button type="submit" class="btn">Faire suivre</button>	
+</form>
+}
 }

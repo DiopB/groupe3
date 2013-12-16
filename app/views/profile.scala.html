@@ -1,6 +1,6 @@
 @(
 message: String,
-utilisateurs: List[models.Utilisateur],
+utilisateur: Utilisateur,
 utilisa : Utilisateur,
 userconnect :Utilisateur
 )
@@ -25,18 +25,16 @@ userconnect :Utilisateur
 		                </tr>
 	</table>   		 		
    } else {
-   
-	                @for((user, i) <- utilisateurs.zipWithIndex.reverse) {
+
 						<tr>
-			                        <td>@user.email</td>
-			                        <td>@user.username</td>
+			                        <td><a href='@routes.Perso.index(utilisateur.username)'>@utilisateur.username</a></td>
+			                        <td>@utilisateur.username</td>
 			
 			    		</tr>
 			    }
 			    
 	</table>
 	             	 
-		  }
                             
  }
  

@@ -24,4 +24,16 @@ public class Utilisateurs extends Controller{
         	return redirect(routes.Authentication.login());//fait une redirection vers routes.Application.index()
 
 }
+	public static Result modifier(){
+		 DynamicForm requestfdata = Form.form().bindFromRequest();
+		 Utilisateur user = Utilisateur.findByEmail(session("email"));
+		 String passwordhashe =requestfdata.get("password");
+		 user.password = passwordhashe;
+		 user.username = requestfdata.get("username"); 
+		 user.description=requestfdata.get("description");
+		
+		 user.save();
+		 	return redirect(routes.Pageperso.index(session("email")));
+	}
+
 }

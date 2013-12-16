@@ -1,9 +1,15 @@
 package controllers;
 
 
+import javax.servlet.http.Cookie;
+
+import com.ning.http.client.Response;
+
 import play.*;
 import play.mvc.*;
 import play.api.Routes;
+import play.api.mvc.Request;
+import play.api.mvc.Session;
 import play.data.*;
 
 import models.*;
@@ -38,13 +44,16 @@ public class Authentication extends Controller {
         if(loginForm.hasErrors()) {
             return badRequest(login.render(loginForm));
         } else {
+        	session().clear();
             session("email", loginForm.get().email);
-            return redirect(routes.Pageperso.index(loginForm.get().email));
+            Utilisateur userconnect = Utilisateur.findByEmail(loginForm.get().email);
+            return redirect(routes.Pageperso.index(userconnect.username));
         }
     }
 
     //Fermer la session
-    public static Result logout() {
+    public static Result logout() throws Throwable  {
+        //session().remove("email");
         session().clear();
         flash("success", "Vous êtes déconnecté(e)");
         return redirect(

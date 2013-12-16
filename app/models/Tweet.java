@@ -17,6 +17,8 @@ public class Tweet extends Model {
 	public int num;
 	public Date creationDate;
 	public String label;
+	public String sujet;
+	public String Taguser;
 	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH })
 	@JoinColumn(name="Tweet_userID")
 	public Utilisateur user;
@@ -39,8 +41,12 @@ public class Tweet extends Model {
 	public static List<Tweet> findall(){
 		return find.all();
 	}
-	public static List<Tweet> findByEmail(String email) {
-        return find.where().eq("Tweet_userID", email).findList();
+	public static List<Tweet> findByusername(String username) {
+        return find.where().eq("Tweet_userID", username).findList();
     }
+	//lister les tweet avec ce sujet
+		public static List<Tweet> findBySujet(String sujet) {
+			return find.where().eq("sujet",sujet).findList();
+		}
 
 }

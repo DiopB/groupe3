@@ -1,16 +1,16 @@
 package controllers;
 
 import models.*;
-import models.Utilisateur;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Security;
 import views.html.*;
-
+@Security.Authenticated(Secured.class)
 public class Pageperso extends Controller{
 	
-	public static Result index(String email){
+	public static Result index(String username){
 		return ok(index.render("Accueil",
-            		Utilisateur.find.byId(email),
+            		Utilisateur.findByusername(username),
             		Tweet.find.orderBy("label").findList()
             		));
 		

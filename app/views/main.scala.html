@@ -6,6 +6,9 @@
     <head>
         <title>@title</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta Http-Equiv="Cache-Control" Content="no-cache">
+		<meta Http-Equiv="Pragma" Content="no-cache">
+		<meta Http-Equiv="Expires" Content="0"> 
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("bootstrap/css/bootstrap.css")">
  
 		<SCRIPT LANGUAGE="javascript">
@@ -37,13 +40,13 @@
                     @if(utilisateur != null){
                     <u1 class="nav">
                     <li><a>@utilisateur.username<span>(@utilisateur.email)</span></a></li>
-                    <li><a href="@routes.Pageperso.index(utilisateur.email)">Journal</a></li>
+                    <li><a href="@routes.Pageperso.index(utilisateur.username)">Journal</a></li>
                     <li><form name="recherche">
                     	<input type="text" name="champ" placeholder="Recherche">               	
                     	<input type="button" VALUE="Rechercher" onClick="controle(recherche)">
                     	</form>
                     </li>
-                    <li><a href="@routes.Perso.index(utilisateur.email)">Profil personnel</a></li>
+                    <li><a href="@routes.Perso.index(utilisateur.username)">Profil personnel</a></li>
                     <li><a href="@routes.Authentication.logout()">Logout</a></li>
                     
                     </u1>
