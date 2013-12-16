@@ -1,0 +1,50 @@
+@(
+message: String,
+utilisateur: Utilisateur,
+tweets: List[models.Tweet]
+)
+<!-- index "appelle" main en lui passant en paramètre le titre de la page et le contenu HTML -->
+@main("Gestion des comptes",utilisateur) {
+	    
+      <!--  Formulaire des Tweets-->
+	<fieldset>
+		<h2> Nouveau Tweet </h2>
+		<form method="post" action="/tweet/add">
+			<input type="text" name="label" placeholder="écrire un nouveau Tweet">
+			<input type="hidden" name="user_email" value="@utilisateur.email"> 
+			<button type="submit" class="btn">publier</button>
+		</form>
+	</fieldset>
+	<!-- Liste des Tweets -->
+	 <table class="table table-striped">
+        
+                <tr>
+                        <td>nb Tweet</td>
+                        <td>ID</td>
+                        <td>Date</td>
+                        <td>Username</td>
+                        <td>Tweet</td>
+                </tr>
+                
+        @for((tweet, i) <- tweets.zipWithIndex.reverse) {
+                <tr>
+                        <td>@i</td>
+                        <td>@tweet.id</td>
+                        <td>@tweet.creationDate</td>
+                        <td>@tweet.user.username</td>
+                        <td>@tweet.label</td>
+                </tr>
+        }
+        </table>
+        
+        Il y a au total @tweets.size tweets.
+     <!-- message d'erreur si l'utilisateur ne respecte pas les contraintes faite sur le modele   -->
+    </ul> 
+     @if(flash.containsKey("error")) {
+        <div class="alert alert-error"> <!-- ceci est un style twitter bootstrap -->
+            <strong>Oups!</strong> @flash.get("error")
+        </div>
+    }
+       
+
+}
